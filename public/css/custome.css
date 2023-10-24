@@ -1,0 +1,131 @@
+* {
+  font-family: 'Nunito', sans-serif;
+    color: #1A5B80;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  main {
+    background-color: #e7e7e7;
+    min-height: 100vh;
+   overflow: hidden;
+  }
+  .navbar {
+  box-shadow: 0px 0px 10px gray;
+  background-color: rgba(26, 91, 128, 0.13);
+  }
+  .icon-nav {
+    position: relative;
+    color: #1A5B80;
+  }
+  .icon-nav:hover {
+      color : #acacac;
+  } 
+  .circle {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #acacac;
+    color: white;
+    text-align: center;
+    font-size: 12px;
+    top: 10px;
+    right: 45px; 
+  }
+  section {
+    min-height : 80vh;
+  }
+
+  /* home */
+  .c-item {
+    height: 480px;
+  }
+  .c-img {
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.6);
+  }
+  .cta {
+    border-radius: 30px;
+    background-color: #1A5B80;
+    border-style: none;
+  }
+  .cta:hover {
+    background-color: #acacac;
+  }
+  #content {
+    background-color: rgba(26, 91, 128, 0.13
+    );
+  }
+  .content {
+    justify-content: center;
+  }
+  #home-kategori {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 40px 80px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  #home-kategori .fe-box {
+    width: 180px;
+    text-align: center;
+    padding: 25px 15px;
+    background-color: #1A5B80;
+    box-shadow: 20px 20px 34px rgba(0, 0, 0, 0,03);
+    border: 1px solid #cce7d0;
+    border-radius: 4px;
+    margin: 15px 0;
+  }
+  
+  #home-kategori .fe-box:hover {
+    box-shadow: 10px 10px 54px rgba(70, 62, 221, 0.1);
+  }
+  #home-kategori .fe-box p {
+    color: white;
+  
+  }
+  
+  /* style footer */
+  footer {
+    position: static;
+    bottom: 0;
+    background-color: rgba(26, 91, 128, 0.13);
+    color: white;
+  }
+  .d-flex {
+    color: #1A5B80;
+  }
+  .sosmed a {
+    text-decoration: none;
+    color: #1A5B80;
+  }
+
+  /* sidebar */
+  .sidebar {
+    position: fixed;
+    width: 250px;
+    height: 97vh;
+
+  }
+  .sidebar a, .sidebar span, .sidebar p {
+    text-decoration: none;
+    color: white;
+  }
+  .sidebar li {
+    list-style: none;
+    padding: 10px 5px;
+  }
+  .sidebar li:hover {
+    background-color: #acacac;
+    border-radius: 10px;
+  }
+  .sidebar h5 {
+    font-size: 24px;
+    font-weight: 800;
+    color: white;
+    text-align: center;
+  }
