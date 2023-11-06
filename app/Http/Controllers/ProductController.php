@@ -14,7 +14,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $data = product::get();
+        $data = product::paginate(5);
         return view('admin.page.product', [
             'name' => "Product",
             'title' => 'Admin Product',
@@ -50,14 +50,14 @@ class ProductController extends Controller
         $data->kategori     = $request->kategori;
         $data->harga        = $request->harga;
         $data->quantity     = $request->quantity;
-        $data->discount     = 10/100;
+        $data->discount     = 10 / 100;
         $data->is_active    = 1;
-        
+
 
 
         if ($request->hasFile('foto')) {
             $photo = $request->file('foto');
-            $filename = date('Ymd') .'_'.$photo->getClientOriginalName();
+            $filename = date('Ymd') . '_' . $photo->getClientOriginalName();
             $photo->move(public_path('storage/product'), $filename);
             $data->foto = $filename;
         }
@@ -69,9 +69,17 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(product $product)
+    public function show($id)
     {
-        //
+        $data = product::findOrFail($id);
+
+        return view(
+            'admin.modal.editModal',
+            [
+                'title' => 'Edit data produk',
+                'data' => $data,
+            ]
+        )->render();
     }
 
     /**
@@ -85,16 +93,44 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateproductRequest $request, product $product)
+    public function update(UpdateproductRequest $request, product $product, $id)
     {
-        //
+        $data = product::findOrFail($id);
+
+        if ($request->file('foto')) {
+            $photo = $request->file('foto');
+            $filename = date('Ymd') . '_' . $photo->getClientOriginalName();
+            $photo->move(public_path('storage/product'), $filename);
+            $data->foto = $filename;
+        } else {
+            $filename = $request->foto;
+        }
+
+        $field = [
+            'sku'                => $request->sku,
+            'nama_product'       => $request->nama,
+            'type'               => $request->type,
+            'kategori'           => $request->kategori,
+            'harga'              => $request->harga,
+            'quantity'           => $request->quantity,
+            'discount'           => 10 / 100,
+            'id_active'          => 1,
+            'foto'               => $filename,
+
+        ];
+
+        $data::where('id', $id)->update($field);
+        return redirect()->route('product')->with('Data berhasil diupdate', 'success');
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(product $product)
+    public function destroy(product $product, $id)
     {
-        //
+        $data = product::findOrFail($id);
+        $data->delete();
+        return redirect()->route('product')->with('Data berhasil dihapus', 'success');
     }
 }

@@ -48,10 +48,10 @@
                     <td>{{$x->harga}}</td>
                     <td>{{$x->quantity}}</td>
                     <td>
-                        <button class="btn btn-info">
+                        <button class="btn btn-info editModal" data-id="{{$x->id}}">
                             <i class="fas fa-edit"></i>
                         </button>
-                        <button class="btn btn-danger">
+                        <button class="btn btn-danger deleteData" data-id="{{$x->id}}">
                             <i class="fas fa-trash-alt"></i>
                         </button>
                     </td>
@@ -59,12 +59,20 @@
                 @endforeach
 
             </tbody>
+
         </table>
+        {{ $data->links() }}
     </div>
 </div>
 <div class="tampilData" style="display: none;"></div>
+<div class="tampilEditData" style="display: none;"></div>
 
 <script>
+    $.ajaxSetup({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        }
+    })
     $('#addData').click(function() {
         $.ajax({
             url: "{{route('addModal')}}",
@@ -73,6 +81,46 @@
                 $('#addModal').modal('show');
             }
         });
+    });
+
+    $('.editModal').click(function(e) {
+        e.preventDefault();
+        var id = $(this).data('id');
+
+        $.ajax({
+            type: "GET",
+            url: "{{route('editModal', ['id' => ':id'])}}".replace(':id', id),
+            success: function(response) {
+                $('.tampiEditlData').html(response).show();
+                $('#editModal').modal('show');
+            }
+        })
+    });
+
+    $('.deleteData').click(function(e) {
+        e.preventDefault();
+        var id = $(this).data('id');
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: "Delete",
+                    url: "{{route('deleteData', ['id' => ':id'])}}".replace(':id', id),
+                    success: function(response) {
+                        location.reload();
+                    }
+
+                })
+            }
+        })
     });
 </script>
 @endsection
