@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,10 +25,15 @@ Route::get('/checkout', [Controller::class, 'checkout'])->name('checkout');
 Route::get('/admin', [Controller::class, 'admin'])->name('admin');
 Route::get('/admin/dashboard', [Controller::class, 'admin'])->name('admin');
 Route::get('/admin/product', [ProductController::class, 'index'])->name('product');
-Route::get('/admin/user_management', [Controller::class, 'userManagement'])->name('userManagement');
 Route::get('/admin/report', [Controller::class, 'report'])->name('report');
- 
 Route::get('/admin/addModal', [ProductController::class, 'addModal'])->name('addModal');
+ 
+Route::get('/admin/user_management', [UserController::class, 'index'])->name('userManagement');
+Route::get('/admin/user_management/addModalUser', [UserController::class, 'addModalUser'])->name('addModal.user');
+Route::POST('/admin/user_management/addData', [UserController::class, 'store'])->name('userManagement.add');
+Route::get('/admin/user_management/editUser/{id}', [UserController::class, 'show'])->name('userManagement.show');
+Route::PUT('/admin/user_management/updateDataUser/{id}', [UserController::class, 'update'])->name('userManagement.update');
+Route::DELETE('/admin/user_management/deleteUser/{id}', [UserController::class, 'destroy'])->name('userManagement.destroy');
 
 Route::POST('/admin/addData', [ProductController::class, 'store'])->name('addData');
 Route::GET('/admin/editModal/{id}', [ProductController::class, 'show'])->name('editModal');

@@ -61,7 +61,7 @@
                         <label for="foto" class="col-sm-5 col-form-label">Foto Product</label>
                         <div class="col-sm-7">
                             <input type="hidden" name="foto" value="{{$data->foto}}">
-                            <img src="{{asset('storage/product/'.$data->foto}}" id="preview" alt="" class="mb-2" style="width: 100px;">
+                            <img src="{{asset('storage/product/'.$data->foto)}}" id="preview" alt="" class="mb-2" style="width: 100px;">
                             <input type="file" class="form-control" accept=".png, .jpg, .jpeg" id="foto" name="foto" onchange="previewImg()">
 
                         </div>

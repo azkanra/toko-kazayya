@@ -23,15 +23,15 @@
         <table class="table table-responsive table-stripped">
             <thead>
                 <tr>
-                    <td>No</td>
-                    <td>Foto</td>
-                    <td>Date In</td>
-                    <td>SKU</td>
-                    <td>Product Name</td>
-                    <td>Category</td>
-                    <td>Price</td>
-                    <td>Stock</td>
-                    <td>#</td>
+                    <th>No</th>
+                    <th>Foto</th>
+                    <th>Date In</th>
+                    <th>SKU</th>
+                    <th>Product Name</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Stock</th>
+                    <th>#</th>
                 </tr>
             </thead>
             <tbody>
@@ -61,7 +61,14 @@
             </tbody>
 
         </table>
-        {{ $data->links() }}
+        <div class="pagination d-flex flex-row justify-content-between">
+            <div class="showData">
+                Data Ditampilkan {{$data->count()}} dari {{$data->total()}}
+            </div>
+            <div>
+                {{ $data->links() }}
+            </div>
+        </div>
     </div>
 </div>
 <div class="tampilData" style="display: none;"></div>
