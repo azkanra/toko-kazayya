@@ -5,7 +5,7 @@
                 <h1 class="modal-title fs-5" id="staticBackdropLabel">{{$title}}</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="{{route('addDataUser')}}" enctype="multipart/form-data" method="POST">
+            <form action="{{route('userManagement.add')}}" enctype="multipart/form-data" method="POST">
                 @csrf
                 <div class="modal-body">
                     <div class="mb-3 row">

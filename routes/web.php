@@ -22,20 +22,24 @@ Route::get('/contact', [Controller::class, 'contact'])->name('contact');
 Route::get('/transaksi', [Controller::class, 'transaksi'])->name('transaksi');
 Route::get('/checkout', [Controller::class, 'checkout'])->name('checkout');
 
-Route::get('/admin', [Controller::class, 'admin'])->name('admin');
-Route::get('/admin/dashboard', [Controller::class, 'admin'])->name('admin');
-Route::get('/admin/product', [ProductController::class, 'index'])->name('product');
-Route::get('/admin/report', [Controller::class, 'report'])->name('report');
-Route::get('/admin/addModal', [ProductController::class, 'addModal'])->name('addModal');
- 
-Route::get('/admin/user_management', [UserController::class, 'index'])->name('userManagement');
-Route::get('/admin/user_management/addModalUser', [UserController::class, 'addModalUser'])->name('addModal.user');
-Route::POST('/admin/user_management/addData', [UserController::class, 'store'])->name('userManagement.add');
-Route::get('/admin/user_management/editUser/{id}', [UserController::class, 'show'])->name('userManagement.show');
-Route::PUT('/admin/user_management/updateDataUser/{id}', [UserController::class, 'update'])->name('userManagement.update');
-Route::DELETE('/admin/user_management/deleteUser/{id}', [UserController::class, 'destroy'])->name('userManagement.destroy');
+Route::group(['middleware' => 'admin'], function () {
+    Route::get('/admin', [Controller::class, 'login'])->name('login');
+    Route::POST('/admin/loginProses', [Controller::class, 'loginProses'])->name('loginProses');
+    Route::get('/admin/dashboard', [Controller::class, 'admin'])->name('admin');
+    Route::get('/admin/logout', [Controller::class, 'logout'])->name('logout');
+    Route::get('/admin/product', [ProductController::class, 'index'])->name('product');
+    Route::get('/admin/report', [Controller::class, 'report'])->name('report');
+    Route::get('/admin/addModal', [ProductController::class, 'addModal'])->name('addModal');
 
-Route::POST('/admin/addData', [ProductController::class, 'store'])->name('addData');
-Route::GET('/admin/editModal/{id}', [ProductController::class, 'show'])->name('editModal');
-Route::PUT('/admin/updateData/{id}', [ProductController::class, 'update'])->name('updateData');
-Route::DELETE('/admin/deleteData/{id}', [ProductController::class, 'destroy'])->name('deleteData');
+    Route::get('/admin/user_management', [UserController::class, 'index'])->name('userManagement');
+    Route::get('/admin/user_management/addModalUser', [UserController::class, 'addModalUser'])->name('addModal.user');
+    Route::POST('/admin/user_management/addData', [UserController::class, 'store'])->name('userManagement.add');
+    Route::get('/admin/user_management/editUser/{id}', [UserController::class, 'show'])->name('userManagement.show');
+    Route::PUT('/admin/user_management/updateDataUser/{id}', [UserController::class, 'update'])->name('userManagement.update');
+    Route::DELETE('/admin/user_management/deleteUser/{id}', [UserController::class, 'destroy'])->name('userManagement.destroy');
+
+    Route::POST('/admin/addData', [ProductController::class, 'store'])->name('addData');
+    Route::GET('/admin/editModal/{id}', [ProductController::class, 'show'])->name('editModal');
+    Route::PUT('/admin/updateData/{id}', [ProductController::class, 'update'])->name('updateData');
+    Route::DELETE('/admin/deleteData/{id}', [ProductController::class, 'destroy'])->name('deleteData');
+});

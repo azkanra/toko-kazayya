@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+
 
 class UserController extends Controller
 {
@@ -22,7 +24,7 @@ class UserController extends Controller
             'nik' => date('Ymd').rand(000,999),
         ]);
     }
-    public function store(UserRequest $request)
+    public function store(Request $request)
     {
         $data = new User;
         $data->nik          = $request->nik;
@@ -44,6 +46,7 @@ class UserController extends Controller
         }
 
         $data->save();
+        return redirect('/admin/user_management');
     }
     public function show()
     {
@@ -53,8 +56,14 @@ class UserController extends Controller
     {
         
     }
-    public function destroy()
+    public function destroy($id)
     {
-        
+        $product = User::findOrFail($id);
+        $product->delete();
+
+        $json = [
+            'success' => "Data berhasil dihapus"
+        ];
+        echo json_encode($json);
     }
 }
