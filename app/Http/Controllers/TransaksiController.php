@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoretransaksiRequest;
 use App\Http\Requests\UpdatetransaksiRequest;
+use App\Models\product;
 use App\Models\transaksi;
 
 class TransaksiController extends Controller
@@ -13,8 +14,13 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-        //
+        $data = product::paginate(15);
+        return view('pelanggan.page.home', [
+            'title' => 'Home',
+            'data' => $data,
+        ]);
     }
+
 
     /**
      * Show the form for creating a new resource.

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -16,7 +17,7 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', [Controller::class, 'index'])->name('Home');
+Route::get('/', [TransaksiController::class, 'index'])->name('Home');
 Route::get('/kategori', [Controller::class, 'kategori'])->name('kategori');
 Route::get('/contact', [Controller::class, 'contact'])->name('contact');
 Route::get('/transaksi', [Controller::class, 'transaksi'])->name('transaksi');

@@ -35,6 +35,12 @@
                 </tr>
             </thead>
             <tbody>
+
+                @if ($data->isEmpty())
+                <tr class="text-center">
+                    <td colspan="9">Belum ada barang</td>
+                </tr>
+                @else
                 @foreach ($data as $y => $x)
                 <tr class="align-middle">
                     <td>{{++$y}}</td>
@@ -57,7 +63,7 @@
                     </td>
                 </tr>
                 @endforeach
-
+                @endif
             </tbody>
 
         </table>

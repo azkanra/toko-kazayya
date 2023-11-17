@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\product;
 use Auth;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -9,22 +10,18 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App\Models\User;
-
+use Illuminate\Support\Facades\Auth as FacadesAuth;
 
 class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
 
-    public function index()
-    {
-        return view('pelanggan.page.home', [
-            'title' => 'Home',
-        ]);
-    }
     public function kategori()
     {
+        $data = product::paginate(5);
         return view('pelanggan.page.kategori', [
             'title' => 'Kategori',
+            'data' => $data,
         ]);
     }
     public function contact()
@@ -88,22 +85,22 @@ class Controller extends BaseController
             Session::flash('error', 'Anda bukan admin');
             return back();
         } else {
-            if (Auth::attempt($dataLogin)) {
-                Alert::toast('Kamu berhasil login', 'success');
+            if (auth()::attempt($dataLogin)) {
+                alert()::toast('Kamu berhasil login', 'success');
                 $request->session()->regenerate();
                 return redirect()->intended('/admin/dashboard');
             } else {
-                Alert::toast('Email dan password salah', 'error');
+                alert()::toast('Email dan password salah', 'error');
                 return back();
             }
         }
     }
     public function logout()
     {
-        Auth::logout();
+        auth()::logout();
         request()->session()->invalidate();
         request()->session()->regenerateToken();
-        Alert::toast('Kamu berhasil logout', 'success');
+        alert()::toast('Kamu berhasil logout', 'success');
         return redirect('admin');
     }
 }
