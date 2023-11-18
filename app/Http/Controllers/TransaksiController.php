@@ -14,10 +14,12 @@ class TransaksiController extends Controller
      */
     public function index()
     {
+        $best = product::where('quantity_out', '>=', 5)->get();
         $data = product::paginate(15);
         return view('pelanggan.page.home', [
             'title' => 'Home',
             'data' => $data,
+            'best' => $best,
         ]);
     }
 

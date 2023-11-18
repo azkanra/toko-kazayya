@@ -22,9 +22,9 @@ Route::get('/kategori', [Controller::class, 'kategori'])->name('kategori');
 Route::get('/contact', [Controller::class, 'contact'])->name('contact');
 Route::get('/transaksi', [Controller::class, 'transaksi'])->name('transaksi');
 Route::get('/checkout', [Controller::class, 'checkout'])->name('checkout');
+Route::get('/admin', [Controller::class, 'login'])->name('login');
 
 Route::group(['middleware' => 'admin'], function () {
-    Route::get('/admin', [Controller::class, 'login'])->name('login');
     Route::POST('/admin/loginProses', [Controller::class, 'loginProses'])->name('loginProses');
     Route::get('/admin/dashboard', [Controller::class, 'admin'])->name('admin');
     Route::get('/admin/logout', [Controller::class, 'logout'])->name('logout');

@@ -3,7 +3,6 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Console\View\Components\Alert;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -19,7 +18,7 @@ class adminMiddleware
         if(auth()->check() && auth()->user()->is_admin){
             return $next($request);
         }
-        alert()::toast('Kamu bukan admin', 'error');
-        return redirect('/admin');
+ 
+        return redirect('/admin')->with('error', 'Kamu bukan Admin');
     }
 }

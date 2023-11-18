@@ -49,6 +49,42 @@
 
 @section('content')
 <section id="content">
+
+    @if ($best->count() === 0)
+    <div class="container">
+
+    </div>
+    @else
+    <h4 class="m-5 pt-3" style="text-align: center;">New Arrival</h4>
+    <div class="content mt-5 d-flex flex-lg-wrap gap-4 m-5">
+        @foreach ($best as $b)
+        <div class="card" style="width:220px;">
+            <div class="card-header m-auto" style="height:100%; width:100%;">
+                <img src="{{asset('storage/product/' . $p->foto)}}" alt="baju 1" style="width: 100%; height: 200px; object-fit:cover;">
+            </div>
+            <div class="card-body">
+                <p class="m-0 text-justify">{{$b->nama_product}}</p>
+            </div>
+            <div class="card-footer d-flex flex-row justify-content-between align-items-center">
+                <p class="m-0" style="font-size: 16px; font-weight:600"><span>IDR </span>{{ number_format($b->harga)}}</p>
+                <button class="btn btn-outline-primary" style="font-size: 24px">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </button>
+            </div>
+        </div>
+        @endforeach
+    </div>
+    <div class="pagination d-flex flex-row justify-content-between">
+        <div class="showData">
+            Data Ditampilkan {{$data->count()}} dari {{$data->total()}}
+        </div>
+        <div>
+            {{ $data->links() }}
+        </div>
+    </div>
+    @endif
+
+
     <h4 class="m-5 pt-3" style="text-align: center;">New Arrival</h4>
     <div class="content mt-5 d-flex flex-lg-wrap gap-4 m-5">
         @if ($data->isEmpty())

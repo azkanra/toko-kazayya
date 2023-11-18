@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('id_transaksi');
             $table->unsignedBigInteger('barang');
+            $table->unsignedBigInteger('id_barang');
+
             $table->timestamps();
 
             $table->foreign('id_transaksi')->references('id')->on('transaksis');
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('detail_transaksis');
+        Schema::dropIfExists('detail_transaksi');
     }
 };
