@@ -17,10 +17,10 @@ class modelDetailTransaksi extends Model
 
     public function transaksi()
     {
-        return $this->belongTo(transaksi::class, 'id_transaksi', 'id');
+        return $this->hasOne(transaksi::class, 'id_transaksi', 'id');
     }
     public function produk()
     {
-        return $this->belongTo(product::class, 'barang', 'id');
+        return $this->hasOne(product::class, 'barang', 'id');
     }
 }
