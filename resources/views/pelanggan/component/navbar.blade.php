@@ -15,15 +15,17 @@
                 <li class="nav-item">
                     <a class="nav-link {{Request::path() == 'contact' ? 'active' : '';}}" href="/contact">Contact Us</a>
                 </li>
+                <li class="nav-item">
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Login | Register</button>
+                </li>
+                <li class="nav-item">
+                    <div class="notif">
+                        <a href="/transaksi" class="fs-5 nav-link">
+                            <i class="fa fa-bag-shopping"></i></a>
+                        <div class="circle">{{$count}}</div>
+                    </div>
+                </li>
             </ul>
-            <div class="d-flex gap-4 align-items-center">
-                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Login | Register</button>
-                <div class="notif">
-                    <a href="/transaksi" class="fs-5">
-                        <i class="fa-solid fa-bag-shopping icon-nav"></i></a>
-                    <div class="circle">10</div>
-                </div>
-            </div>
         </div>
     </div>
 </nav>

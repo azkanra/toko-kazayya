@@ -14,26 +14,35 @@
   box-shadow: 0px 0px 10px gray;
   background-color: rgba(26, 91, 128, 0.13);
   }
-  .icon-nav {
+  /* .icon-nav {
     position: relative;
     color: #1A5B80;
   }
   .icon-nav:hover {
       color : #acacac;
-  } 
+  }  */
   .circle {
     position: absolute;
-    width: 20px;
-    height: 20px;
+    top: -1px;
+    right: -10px;
     border-radius: 50%;
-    background-color: #acacac;
+    background-color: #f42222;
     color: white;
-    text-align: center;
     font-size: 12px;
-    top: 10px;
-    right: 45px; 
+    padding: 2px 5px;
   }
-  section {
+  .notif{ 
+    position: relative;
+    display: inline-block;
+  }
+  .fa-bag-shopping{
+    font-size: 24px;
+    color: #acacac;
+  }
+  .fa-bag-shopping:hover{
+    color: white;
+  }
+  .section {
     min-height : 80vh;
   }
 

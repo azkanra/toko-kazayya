@@ -67,9 +67,13 @@
             </div>
             <div class="card-footer d-flex flex-row justify-content-between align-items-center">
                 <p class="m-0" style="font-size: 16px; font-weight:600"><span>IDR </span>{{ number_format($b->harga)}}</p>
-                <button class="btn btn-outline-primary" style="font-size: 24px">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                </button>
+                <form action="{{rout(addTocart , $p->id)}}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn btn-outline-primary" style="font-size: 24px">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+                </form>
+
             </div>
         </div>
         @endforeach

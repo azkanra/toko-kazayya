@@ -18,6 +18,8 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', [TransaksiController::class, 'index'])->name('Home');
+Route::post('/adTocart', [TransaksiController::class, 'adTocart'])->name('adTocart');
+
 Route::get('/kategori', [Controller::class, 'kategori'])->name('kategori');
 Route::get('/contact', [Controller::class, 'contact'])->name('contact');
 Route::get('/transaksi', [Controller::class, 'transaksi'])->name('transaksi');
@@ -32,7 +34,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('/admin/report', [Controller::class, 'report'])->name('report');
     Route::get('/admin/addModal', [ProductController::class, 'addModal'])->name('addModal');
 
-    Route::get('/admin/user_management', [UserController::class, 'index'])->name('userManagement');
+     Route::get('/admin/user_management', [UserController::class, 'index'])->name('userManagement');
     Route::get('/admin/user_management/addModalUser', [UserController::class, 'addModalUser'])->name('addModal.user');
     Route::POST('/admin/user_management/addData', [UserController::class, 'store'])->name('userManagement.add');
     Route::get('/admin/user_management/editUser/{id}', [UserController::class, 'show'])->name('userManagement.show');

@@ -3,14 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\product;
-use Auth;
+use App\Models\tblCart;
+use App\Models\transaksi;
+use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
-use App\Models\User;
-use Illuminate\Support\Facades\Auth as FacadesAuth;
+use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class Controller extends BaseController
 {
@@ -85,8 +87,8 @@ class Controller extends BaseController
             Session::flash('error', 'Anda bukan admin');
             return back();
         } else {
-            if (auth()::attempt($dataLogin)) {
-                alert()::toast('Kamu berhasil login', 'success');
+            if (Auth::attempt($dataLogin)) {
+                Alert::toast('Kamu berhasil login', 'success');
                 $request->session()->regenerate();
                 return redirect()->intended('/admin/dashboard');
             } else {
@@ -97,7 +99,7 @@ class Controller extends BaseController
     }
     public function logout()
     {
-        auth()::logout();
+        Auth::logout();
         request()->session()->invalidate();
         request()->session()->regenerateToken();
         alert()::toast('Kamu berhasil logout', 'success');

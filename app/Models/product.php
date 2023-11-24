@@ -23,5 +23,8 @@ class product extends Model
         'is_active',
 
     ];
-    protected $hidden; 
+    // public function product()
+    // {
+    //     return $this->hasOne(tblCart::class, '', 'id');
+    // } 
 }
