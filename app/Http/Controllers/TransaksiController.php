@@ -20,7 +20,7 @@ class TransaksiController extends Controller
     {
         $best = product::where('quantity_out', '>=', 5)->get();
         $data = product::paginate(15);
-        $countKeranjang = tblCart::count();
+        $countKeranjang = tblCart::where(['idUser' => 'guest123', 'status' => 0])->count();
         return view('pelanggan.page.home', [
             'title' => 'Home',
             'data' => $data,
@@ -28,7 +28,6 @@ class TransaksiController extends Controller
             'count' => $countKeranjang,
         ]);
     }
-
 
     /**
      * Show the form for creating a new resource.

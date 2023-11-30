@@ -8,11 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class modelDetailTransaksi extends Model
 {
     use HasFactory;
-
+    protected $table = 'detail_transaksi';
     public $timestamps = true;
     protected $fillable = [
         'id_transaksi',
         'id_barang', 
+        'qty',
+        'price',
         'status',
     ];
 

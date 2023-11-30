@@ -12,7 +12,6 @@ class transaksi extends Model
     public $timestamp = true;
     protected $fillable = [
         'code_transaksi',
-        'sku_transaksi',
         'total_qty',
         'total_harga',
         'nama_customer',

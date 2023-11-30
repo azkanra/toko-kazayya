@@ -23,11 +23,15 @@ Route::post('/adTocart', [TransaksiController::class, 'adTocart'])->name('adToca
 Route::get('/kategori', [Controller::class, 'kategori'])->name('kategori');
 Route::get('/contact', [Controller::class, 'contact'])->name('contact');
 Route::get('/transaksi', [Controller::class, 'transaksi'])->name('transaksi');
+
 Route::get('/checkout', [Controller::class, 'checkout'])->name('checkout');
+Route::POST('/checkout/proses/{id}', [Controller::class, 'prosesCheckout'])->name('checkout.product');
+Route::POST('/checkout/prosesPembayaran', [Controller::class, 'prosesPembayaran'])->name('checkout.bayar');
+
 Route::get('/admin', [Controller::class, 'login'])->name('login');
+Route::get('/admin/loginProses', [Controller::class, 'loginProses'])->name('loginProses');
 
 Route::group(['middleware' => 'admin'], function () {
-    Route::POST('/admin/loginProses', [Controller::class, 'loginProses'])->name('loginProses');
     Route::get('/admin/dashboard', [Controller::class, 'admin'])->name('admin');
     Route::get('/admin/logout', [Controller::class, 'logout'])->name('logout');
     Route::get('/admin/product', [ProductController::class, 'index'])->name('product');
