@@ -1,16 +1,6 @@
 @extends('admin.layout.index')
 
 @section('content')
-<div class="card mb-1">
-    <div class="card-body d-flex flex-row justify-content-between">
-        <div class="filter d-flex flex-lg-row gap-3">
-            <input type="date" class="form-control" name="tgl_awal">
-            <input type="date" class="form-control" name="tgl_akhir">
-            <button class="btn btn-primary">Filter</button>
-        </div>
-        <input type="text" class="form-control w-25" placeholder="Search...">
-    </div>
-</div>
 <div class="card rounded-full">
     <div class="card-header bg-transparent d-flex justify-content-between">
         <button class="btn btn-info" id="addData">
@@ -18,6 +8,7 @@
                 <span>Tambah Product</span>
             </i>
         </button>
+        <input type="text" wire:model="search" class="form-control w-25" placeholder="Search...">
     </div>
     <div class="card-body">
         <table class="table table-responsive table-stripped">
@@ -107,7 +98,7 @@
                 $('.tampiEditlData').html(response).show();
                 $('#editModal').modal('show');
             }
-        })
+        });
     });
 
     $('.deleteData').click(function(e) {

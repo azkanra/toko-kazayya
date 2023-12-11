@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-lg rounded-3 m-3" style="height: 80px;">
-    <div class="container">
+<nav class="navbar navbar-expand-sm rounded-3 m-3" style="height: 80px;">
+    <div class="d-flex flex-row justify-content-between align-items-center w-full">
         <a class="navbar-brand" href="#">KAZAYYA</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -20,7 +20,7 @@
                 </li>
                 <li class="nav-item">
                     <div class="notif">
-                        <a href="/transaksi" class="fs-5 nav-link">
+                        <a href="/transaksi" class="fs-5 nav-link nav-link {{Request::path() == 'transaksi' ? 'active' : '';}}">
                             <i class="fa fa-bag-shopping"></i>
                         </a>
                         @if ($count)
@@ -28,6 +28,13 @@
 
                         @endif
 
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div class="notif">
+                        <a href="/checkOut" class="fs-5 nav-link nav-link {{Request::path() == 'checkOut' ? 'active' : '';}}">
+                            <i class="fa fa-cash-register"></i>
+                        </a>
                     </div>
                 </li>
             </ul>

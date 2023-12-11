@@ -29,6 +29,8 @@ class UserController extends Controller
     }
     public function store(Request $request)
     {
+        dd($request);
+        die;
         $data = new User;
         $data->nik          = $request->nik;
         $data->name         = $request->nama;

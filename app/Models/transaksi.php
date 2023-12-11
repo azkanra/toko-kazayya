@@ -17,6 +17,7 @@ class transaksi extends Model
         'nama_customer',
         'alamat',
         'no_tlp',
+        'status',
     ];
     protected $hidden;
 }

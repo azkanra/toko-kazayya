@@ -22,13 +22,13 @@
                     </div>
                 </a>
             </li>
-            <li class="navbar-item rounded {{Request::path() === 'admin/user_management' ? 'bg-info' : '' }} ">
-                <a href="user_management" class="">
+            <li class="navbar-item rounded {{Request::path() === 'admin/transaksi' ? 'bg-info' : '' }} ">
+                <a href="transaksi" class="">
                     <div class="d-flex gap-3">
                         <span class="material-icons">
-                            people_alt
+                            receipt_long
                         </span>
-                        <p class="m-0 p-0">User Management</p>
+                        <p class="m-0 p-0">Transaksi</p>
                     </div>
                 </a>
             </li>
@@ -39,6 +39,16 @@
                             analytics
                         </span>
                         <p class="m-0 p-0">Report</p>
+                    </div>
+                </a>
+            </li>
+            <li class="navbar-item rounded {{Request::path() === 'admin/user_management' ? 'bg-info' : '' }} ">
+                <a href="user_management" class="">
+                    <div class="d-flex gap-3">
+                        <span class="material-icons">
+                            people_alt
+                        </span>
+                        <p class="m-0 p-0">User Management</p>
                     </div>
                 </a>
             </li>

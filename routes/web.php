@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\TransaksiAdminController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\UserController;
 
@@ -27,6 +28,9 @@ Route::get('/transaksi', [Controller::class, 'transaksi'])->name('transaksi');
 Route::get('/checkout', [Controller::class, 'checkout'])->name('checkout');
 Route::POST('/checkout/proses/{id}', [Controller::class, 'prosesCheckout'])->name('checkout.product');
 Route::POST('/checkout/prosesPembayaran', [Controller::class, 'prosesPembayaran'])->name('checkout.bayar');
+Route::get('/checkOut', [Controller::class, 'keranjang'])->name('keranjang');
+Route::get('/checkout/{id}', [Controller::class, 'bayar'])->name('keranjang.bayar');
+
 
 Route::get('/admin', [Controller::class, 'login'])->name('login');
 Route::get('/admin/loginProses', [Controller::class, 'loginProses'])->name('loginProses');
@@ -49,4 +53,6 @@ Route::group(['middleware' => 'admin'], function () {
     Route::GET('/admin/editModal/{id}', [ProductController::class, 'show'])->name('editModal');
     Route::PUT('/admin/updateData/{id}', [ProductController::class, 'update'])->name('updateData');
     Route::DELETE('/admin/deleteData/{id}', [ProductController::class, 'destroy'])->name('deleteData');
+
+    Route::GET('/admin/transaksi', [TransaksiAdminController::class, 'index'])->name('transaksi.admin');
 });

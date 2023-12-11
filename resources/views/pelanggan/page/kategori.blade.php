@@ -1,9 +1,9 @@
 @extends('pelanggan.layout.index')
 
 @section('content')
-<div class="row mt-4">
+<div class="d-flex flex-row gap-2 mt-4">
     <div class="col-md-3">
-        <div class="card" style="width: 18rem ">
+        <div class="" style="width:30%;">
             <div class="card-header">
                 Kategori
             </div>
@@ -142,12 +142,12 @@
         <h1>Belum ada produk ..</h1>
         @else
         @foreach ($data as $p)
-        <div class="card" style="width:220px;">
-            <div class="card-header m-auto" style="height:100%; width:100%;">
-                <img src="{{asset('storage/product/' . $p->foto)}}" alt="baju 1" style="width: 100%; height: 200px; object-fit:cover;">
+        <div class="card" style="width:200px;">
+            <div class="card-header m-auto">
+                <img src="{{asset('storage/product/' . $p->foto)}}" alt="baju 1" style="width: 100%; height: 130px; object-fit:cover;">
             </div>
             <div class="card-body">
-                <p class="m-0 text-justify">{{$p->nama_product}}</p>
+                <p class="m-0 text-justify" style="font-size: 14px;">{{$p->nama_product}}</p>
             </div>
             <div class="card-footer d-flex flex-row justify-content-between align-items-center">
                 <p class="m-0" style="font-size: 16px; font-weight:600"><span>IDR </span>{{ number_format($p->harga)}}</p>
@@ -160,15 +160,16 @@
         @endforeach
 
     </div>
-    <div class="pagination d-flex flex-row justify-content-between">
-        <div class="showData">
-            Data Ditampilkan {{$data->count()}} dari {{$data->total()}}
-        </div>
-        <div>
-            {{ $data->links() }}
-        </div>
-    </div>
-    @endif
 </div>
+<div class="pagination d-flex flex-row justify-content-between">
+    <div class="showData">
+        Data Ditampilkan {{$data->count()}} dari {{$data->total()}}
+    </div>
+    <div>
+        {{ $data->links() }}
+    </div>
+</div>
+@endif
+
 
 @endsection
